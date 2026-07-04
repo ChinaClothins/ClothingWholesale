@@ -390,46 +390,28 @@
             position: relative;
         }
 
-        .hero-card-stack {
+        .hero-carousel {
             position: relative;
             width: 100%;
             max-width: 420px;
-            aspect-ratio: 4/5;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-carousel-track {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .hero-card {
-            position: absolute;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
             background: #fff;
-        }
-
-        .hero-card:nth-child(1) {
-            width: 75%;
-            aspect-ratio: 3/4;
-            top: 0;
-            left: 0;
-            z-index: 3;
-            transform: rotate(-3deg);
-        }
-
-        .hero-card:nth-child(2) {
-            width: 70%;
-            aspect-ratio: 3/4;
-            top: 8%;
-            right: 0;
-            z-index: 2;
-            transform: rotate(5deg);
-        }
-
-        .hero-card:nth-child(3) {
-            width: 65%;
-            aspect-ratio: 3/4;
-            bottom: 5%;
-            left: 15%;
-            z-index: 1;
-            transform: rotate(-1deg);
         }
 
         .hero-card .card-img-placeholder {
@@ -437,6 +419,70 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        .hero-carousel-indicators {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .hero-carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .hero-carousel-indicator.active {
+            width: 28px;
+            border-radius: 5px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            right: 12px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .hero-carousel:hover .hero-carousel-controls {
+            opacity: 1;
+        }
+
+        .hero-carousel-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-carousel-btn:hover {
+            background: #fff;
+            transform: scale(1.1);
         }
 
         /* ==================== SECTION COMMONS ==================== */
@@ -634,7 +680,7 @@
             line-height: 1.5;
         }
 
-        .product-moq {
+        .product-sales {
             font-weight: 600;
             font-size: 0.85rem;
             color: var(--green-darker);
@@ -960,6 +1006,98 @@
             align-self: flex-start;
         }
 
+        /* ==================== WHATSAPP QR MODAL ==================== */
+        .whatsapp-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-slow);
+            backdrop-filter: blur(4px);
+        }
+        .whatsapp-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .whatsapp-modal {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 0;
+            max-width: 360px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform var(--transition-slow);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .whatsapp-modal-overlay.active .whatsapp-modal {
+            transform: scale(1);
+        }
+        .whatsapp-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            z-index: 10;
+        }
+        .whatsapp-modal-close:hover {
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--text-primary);
+        }
+        .whatsapp-modal-content {
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .whatsapp-modal-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 8px;
+            letter-spacing: -0.3px;
+        }
+        .whatsapp-modal-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0 0 20px;
+            line-height: 1.5;
+        }
+        .whatsapp-qr-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .whatsapp-qr-code {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: var(--radius-sm);
+        }
+        .whatsapp-modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
         .contact-detail-item {
             display: flex;
             align-items: center;
@@ -1142,7 +1280,7 @@
             .contact-grid {
                 gap: 36px;
             }
-            .hero-card-stack {
+            .hero-carousel {
                 max-width: 340px;
             }
         }
@@ -1222,7 +1360,7 @@
             .hero-buttons {
                 justify-content: center;
             }
-            .hero-card-stack {
+            .hero-carousel {
                 max-width: 260px;
                 margin: 0 auto;
             }
@@ -1334,7 +1472,7 @@
                 font-size: 0.68rem;
                 padding: 2px 7px;
             }
-            .product-moq {
+            .product-sales {
                 font-size: 0.75rem;
             }
             .product-inquire-btn {
@@ -1402,14 +1540,40 @@
                     <li><a href="#products" data-nav-link>Products</a></li>
                     <li><a href="#about" data-nav-link>About Us</a></li>
                     <li><a href="#contact" data-nav-link>Contact</a></li>
-                    <li><a href="https://wa.me/8614718129437?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20wholesale%20pricing%20and%20your%20product%20catalog." class="nav-cta" target="_blank" rel="noopener noreferrer">
+                    <li><button class="nav-cta" id="whatsappBtn">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
                             WhatsApp
-                    </a></li>
+                    </button></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- ==================== WHATSAPP QR MODAL ==================== -->
+    <div class="whatsapp-modal-overlay" id="whatsappModalOverlay">
+        <div class="whatsapp-modal" id="whatsappModal">
+            <button class="whatsapp-modal-close" id="whatsappModalClose" aria-label="Close">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="whatsapp-modal-content">
+                <h3>Scan to Chat</h3>
+                <p>Scan this QR code to connect with us on WhatsApp</p>
+                <div class="whatsapp-qr-container">
+                    <img src="img/tall.jpg" alt="WhatsApp QR Code" class="whatsapp-qr-code">
+                </div>
+                <div class="whatsapp-modal-buttons">
+                    <a href="https://wa.me/8614718129437" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        Or Chat Directly
+                    </a>
+                    <button class="btn btn-outline" id="emailContactBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        Contact via Email
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero" id="home">
@@ -1426,22 +1590,33 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">View Products</a>
-                    <a href="https://wa.me/8614718129437?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20wholesale%20pricing%20and%20your%20product%20catalog." class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                    <button class="btn btn-outline" id="heroWhatsappBtn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
                         Chat on WhatsApp
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="hero-visual animate-on-scroll">
-                <div class="hero-card-stack">
-                    <div class="hero-card">
-                        <img src="img/儿童公主裙1.jpg" alt="Girls' Princess Dress" class="card-img-placeholder" loading="eager">
+                <div class="hero-carousel" id="heroCarousel">
+                    <div class="hero-carousel-track" id="heroCarouselTrack">
+                        <div class="hero-card">
+                            <img src="img/儿童花布连衣裙3.jpg" alt="Girls' Floral Dress" class="card-img-placeholder" loading="eager">
+                        </div>
+                        <div class="hero-card">
+                            <img src="img/儿童花布连衣裙2.jpg" alt="Girls' Hawaiian Dress" class="card-img-placeholder" loading="eager">
+                        </div>
+                        <div class="hero-card">
+                            <img src="img/花布连衣裙1.jpg" alt="Floral Print Dress" class="card-img-placeholder" loading="eager">
+                        </div>
                     </div>
-                    <div class="hero-card">
-                        <img src="img/成人连衣裙1.jpg" alt="Women's Fashion Dress" class="card-img-placeholder" loading="eager">
+                    <div class="hero-carousel-controls">
+                        <button class="hero-carousel-btn" id="heroCarouselPrev" aria-label="Previous slide">‹</button>
+                        <button class="hero-carousel-btn" id="heroCarouselNext" aria-label="Next slide">›</button>
                     </div>
-                    <div class="hero-card">
-                        <img src="img/男童套装1.jpg" alt="Boys' Casual Set" class="card-img-placeholder" loading="eager">
+                    <div class="hero-carousel-indicators" id="heroCarouselIndicators">
+                        <button class="hero-carousel-indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                        <button class="hero-carousel-indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                        <button class="hero-carousel-indicator" data-slide="2" aria-label="Go to slide 3"></button>
                     </div>
                 </div>
             </div>
@@ -1595,10 +1770,6 @@
                         <div class="icon-circle">📞</div>
                         <span>+86 147 1812 9437</span>
                     </div>
-                    <div class="contact-detail-item">
-                        <div class="icon-circle">📍</div>
-                        <span>Guangzhou, China — Export Worldwide</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1646,6 +1817,81 @@
             var formSuccessMsg = document.getElementById('formSuccessMsg');
             var floatingWA = document.querySelector('.floating-wa');
             var allNavLinks = document.querySelectorAll('[data-nav-link]');
+            var whatsappBtn = document.getElementById('whatsappBtn');
+            var whatsappModalOverlay = document.getElementById('whatsappModalOverlay');
+            var whatsappModalClose = document.getElementById('whatsappModalClose');
+            var emailContactBtn = document.getElementById('emailContactBtn');
+            var heroWhatsappBtn = document.getElementById('heroWhatsappBtn');
+
+            // ============================================================
+            // HERO CAROUSEL
+            // ============================================================
+            var heroCarousel = document.getElementById('heroCarousel');
+            var heroCarouselTrack = document.getElementById('heroCarouselTrack');
+            var heroCarouselPrevBtn = document.getElementById('heroCarouselPrev');
+            var heroCarouselNextBtn = document.getElementById('heroCarouselNext');
+            var heroCarouselIndicators = document.getElementById('heroCarouselIndicators');
+            var heroCarouselSlideCount = heroCarouselTrack ? heroCarouselTrack.children.length : 0;
+            var heroCarouselCurrentIndex = 0;
+            var heroCarouselAutoPlayInterval = null;
+            var heroCarouselAutoPlayDelay = 5000;
+
+            function heroCarouselGoTo(index) {
+                if (!heroCarouselTrack || heroCarouselSlideCount === 0) return;
+                index = (index + heroCarouselSlideCount) % heroCarouselSlideCount;
+                heroCarouselCurrentIndex = index;
+                heroCarouselTrack.style.transform = 'translateX(-' + (index * 100) + '%)';
+                heroCarouselIndicators.querySelectorAll('.hero-carousel-indicator').forEach(function(indicator, i) {
+                    indicator.classList.toggle('active', i === index);
+                });
+            }
+
+            function heroCarouselGoNext() {
+                heroCarouselGoTo(heroCarouselCurrentIndex + 1);
+            }
+
+            function heroCarouselGoPrev() {
+                heroCarouselGoTo(heroCarouselCurrentIndex - 1);
+            }
+
+            function heroCarouselStartAutoPlay() {
+                if (heroCarouselAutoPlayInterval) clearInterval(heroCarouselAutoPlayInterval);
+                heroCarouselAutoPlayInterval = setInterval(heroCarouselGoNext, heroCarouselAutoPlayDelay);
+            }
+
+            function heroCarouselStopAutoPlay() {
+                if (heroCarouselAutoPlayInterval) {
+                    clearInterval(heroCarouselAutoPlayInterval);
+                    heroCarouselAutoPlayInterval = null;
+                }
+            }
+
+            if (heroCarousel && heroCarouselTrack && heroCarouselSlideCount > 1) {
+                heroCarouselPrevBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    heroCarouselGoPrev();
+                });
+
+                heroCarouselNextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    heroCarouselGoNext();
+                });
+
+                heroCarouselIndicators.addEventListener('click', function(e) {
+                    var indicator = e.target.closest('.hero-carousel-indicator');
+                    if (indicator) {
+                        var slideIndex = parseInt(indicator.getAttribute('data-slide'), 10);
+                        if (!isNaN(slideIndex)) {
+                            heroCarouselGoTo(slideIndex);
+                        }
+                    }
+                });
+
+                heroCarousel.addEventListener('mouseenter', heroCarouselStopAutoPlay);
+                heroCarousel.addEventListener('mouseleave', heroCarouselStartAutoPlay);
+
+                heroCarouselStartAutoPlay();
+            }
 
             // ============================================================
             // MOBILE MENU
@@ -1679,6 +1925,46 @@
             });
 
             // ============================================================
+            // WHATSAPP QR MODAL
+            // ============================================================
+            function openWhatsappModal() {
+                whatsappModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeWhatsappModal() {
+                whatsappModalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', openWhatsappModal);
+            }
+            if (heroWhatsappBtn) {
+                heroWhatsappBtn.addEventListener('click', openWhatsappModal);
+            }
+            if (whatsappModalClose) {
+                whatsappModalClose.addEventListener('click', closeWhatsappModal);
+            }
+            if (whatsappModalOverlay) {
+                whatsappModalOverlay.addEventListener('click', function(e) {
+                    if (e.target === whatsappModalOverlay) closeWhatsappModal();
+                });
+            }
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && whatsappModalOverlay.classList.contains('active')) closeWhatsappModal();
+            });
+            if (emailContactBtn) {
+                emailContactBtn.addEventListener('click', function() {
+                    closeWhatsappModal();
+                    var contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    }
+                });
+            }
+
+            // ============================================================
             // HEADER SCROLL SHADOW
             // ============================================================
             function updateHeaderShadow() {
@@ -1697,21 +1983,14 @@
                     var card = document.createElement('div');
                     card.className = 'product-card animate-on-scroll';
                     card.setAttribute('data-category', p.category || '');
+                    var sales = Math.floor(Math.random() * 5000) + 500;
                     card.innerHTML =
                         '<div class="product-card-image">' +
-                            '<span class="product-tag">' + esc(p.tag) + '</span>' +
-                            '<span class="product-stock-badge">' + esc(p.stockBadge) + '</span>' +
                             '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy">' +
                         '</div>' +
                         '<div class="product-card-body">' +
                             '<h3>' + esc(p.name) + '</h3>' +
-                            '<div class="product-meta">' +
-                                '<span>' + esc(p.sizes) + '</span>' +
-                                '<span>' + esc(p.colors) + '</span>' +
-                                '<span>' + esc(p.season) + '</span>' +
-                            '</div>' +
-                            '<p class="product-desc">' + esc(p.desc) + '</p>' +
-                            '<p class="product-moq">📦 MOQ: ' + esc(p.moq) + '</p>' +
+                            '<p class="product-sales">Sales: ' + sales + ' pcs</p>' +
                             '<a href="#contact" class="product-inquire-btn">Inquire via WhatsApp →</a>' +
                         '</div>';
                     productGrid.appendChild(card);

@@ -2070,17 +2070,20 @@
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending...';
 
+                var formData = new FormData();
+                formData.append('name', name);
+                formData.append('contact', contactInfo);
+                formData.append('product_interest', document.getElementById('productInterest').value.trim());
+                formData.append('message', message);
+                formData.append('_subject', 'New Inquiry from Website');
+                formData.append('_captcha', 'false');
+                formData.append('_template', 'table');
+
                 fetch(inquiryForm.action, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({
-                        name: name,
-                        contact: contactInfo,
-                        product_interest: document.getElementById('productInterest').value.trim(),
-                        message: message
-                    })
+                    body: formData
                 })
-                .then(function(res) { return res.json(); })
+                .then(function(res) { return res.text(); })
                 .then(function() {
                     inquiryForm.style.display = 'none';
                     formSuccessMsg.classList.add('show');
@@ -2092,10 +2095,16 @@
                         submitBtn.textContent = 'Send Inquiry';
                     }, 5000);
                 })
-                .catch(function() {
+                .catch(function(err) {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Send Inquiry';
-                    alert('Submission failed. Please try WhatsApp instead.');
+                    var msg = 'Submission failed. ';
+                    if (err && err.message) {
+                        msg += 'Error: ' + err.message;
+                    } else {
+                        msg += 'Please check your internet connection or try WhatsApp instead.';
+                    }
+                    alert(msg);
                 });
             });
 

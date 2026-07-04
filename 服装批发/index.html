@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Wholesale - Wholesale Apparel Inventory</title>
+    <meta name="description" content="专注于服装批发库存，覆盖童鞋、宝宝连体衣、女童公主裙、女童印花连衣裙、男童两件套、女装连衣裙、运动服、潮流书包、品牌手袋、纯棉面料等1000+款式。支持混批出货，灵活起订，童装批发首选！">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #25D366;
+            --green-dark: #128C7E;
+            --green-darker: #075E54;
+            --green-light: #dcf8c6;
+            --green-bg: #e8f5e9;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #6b7280;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-cream: #fafaf8;
+            --border: #e5e7eb;
+            --border-light: #f0f0f0;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.10);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+            --radius-sm: 6px;
+            --radius: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1280px;
+            --header-height: 70px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        /* ==================== HEADER / NAVIGATION ==================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: all var(--transition);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .header.scrolled {
+            border-bottom-color: var(--border-light);
+            box-shadow: var(--shadow-sm);
+            background: rgba(255, 255, 255, 0.97);
+        }
+
+        .header-inner {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--green);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .logo-text span {
+            color: var(--green-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.925rem;
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: all var(--transition);
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--green-darker);
+            background: var(--green-bg);
+        }
+
+        .nav-cta {
+            background: var(--green) !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+            padding: 10px 20px !important;
+            border-radius: 50px !important;
+            transition: all var(--transition) !important;
+            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+        }
+
+        .nav-cta:hover,
+        .nav-cta:focus-visible {
+            background: var(--green-dark) !important;
+            color: #fff !important;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            flex-direction: column;
+            gap: 5px;
+            width: 36px;
+            height: 28px;
+            justify-content: center;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2.5px;
+            background: var(--text-primary);
+            border-radius: 4px;
+            transition: all var(--transition);
+            transform-origin: center;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            padding: calc(var(--header-height) + 60px) 24px 80px;
+            background: var(--bg-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(18, 140, 126, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            width: fit-content;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+            color: var(--text-primary);
+        }
+
+        .hero h1 .highlight {
+            color: var(--green-dark);
+            position: relative;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: var(--green-light);
+            z-index: -1;
+            border-radius: 4px;
+            opacity: 0.6;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 480px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition);
+            white-space: nowrap;
+            font-family: inherit;
+            letter-spacing: -0.2px;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+        }
+        .btn-primary:hover {
+            background: var(--green-dark);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: #fff;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+        .btn-outline:hover {
+            border-color: var(--green);
+            color: var(--green-darker);
+            background: var(--green-bg);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+        }
+        .btn-whatsapp:hover {
+            background: #1fb855;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+            transform: translateY(-2px);
+        }
+        .btn-whatsapp svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-card-stack {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 4/5;
+        }
+
+        .hero-card {
+            position: absolute;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: #fff;
+        }
+
+        .hero-card:nth-child(1) {
+            width: 75%;
+            aspect-ratio: 3/4;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            transform: rotate(-3deg);
+        }
+
+        .hero-card:nth-child(2) {
+            width: 70%;
+            aspect-ratio: 3/4;
+            top: 8%;
+            right: 0;
+            z-index: 2;
+            transform: rotate(5deg);
+        }
+
+        .hero-card:nth-child(3) {
+            width: 65%;
+            aspect-ratio: 3/4;
+            bottom: 5%;
+            left: 15%;
+            z-index: 1;
+            transform: rotate(-1deg);
+        }
+
+        .hero-card .card-img-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ==================== SECTION COMMONS ==================== */
+        .section {
+            padding: 80px 24px;
+        }
+
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--green-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* ==================== PRODUCTS SECTION ==================== */
+        .products-section {
+            background: var(--bg-white);
+        }
+
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .filter-tab {
+            padding: 10px 22px;
+            border-radius: 50px;
+            border: 1.5px solid var(--border);
+            background: #fff;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--green);
+            color: var(--green-darker);
+            background: var(--green-bg);
+        }
+        .filter-tab.active {
+            background: var(--green);
+            color: #fff;
+            border-color: var(--green);
+            box-shadow: 0 2px 12px rgba(37, 211, 102, 0.3);
+            font-weight: 600;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: all var(--transition-slow);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            group: true;
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-6px);
+            border-color: transparent;
+        }
+
+        .product-card-image {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: #f5f5f5;
+            cursor: pointer;
+        }
+
+        .product-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover .product-card-image img {
+            transform: scale(1.06);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.3px;
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-stock-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: var(--green);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 2;
+            letter-spacing: 0.2px;
+        }
+
+        .product-card-body {
+            padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .product-card-body h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+            line-height: 1.3;
+        }
+
+        .product-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .product-meta span {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            background: var(--bg-light);
+            padding: 4px 10px;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .product-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .product-moq {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--green-darker);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: auto;
+            padding-top: 4px;
+        }
+
+        .product-inquire-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 50px;
+            background: transparent;
+            border: 1.5px solid var(--border);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            font-family: inherit;
+            margin-top: 6px;
+        }
+
+        .product-inquire-btn:hover {
+            background: var(--green-bg);
+            border-color: var(--green);
+            color: var(--green-darker);
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about-section {
+            background: var(--bg-cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text h2 {
+            font-size: clamp(1.7rem, 3vw, 2.3rem);
+            font-weight: 700;
+            letter-spacing: -0.6px;
+            margin-bottom: 16px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px 14px;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--green-dark);
+            letter-spacing: -1px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .about-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            max-width: 440px;
+            aspect-ratio: 4/3;
+            border-radius: var(--radius-xl);
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 30%, #fff 70%, #f1f8e9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-placeholder .inner-icon {
+            font-size: 5rem;
+            opacity: 0.5;
+        }
+
+        .about-image-placeholder::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px dashed rgba(37, 211, 102, 0.25);
+            border-radius: var(--radius-xl);
+            margin: 16px;
+            pointer-events: none;
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact-section {
+            background: var(--bg-white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-form-wrapper {
+            background: var(--bg-light);
+            border-radius: var(--radius-xl);
+            padding: 36px 32px;
+            border: 1px solid var(--border-light);
+        }
+
+        .contact-form-wrapper h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.4px;
+        }
+
+        .contact-form-wrapper .form-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            background: #fff;
+            transition: all var(--transition);
+            resize: vertical;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.08);
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--green);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: inherit;
+            letter-spacing: -0.2px;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: var(--green-dark);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .form-success-msg {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: var(--green-darker);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .form-success-msg.show {
+            display: block;
+        }
+
+        .contact-info-side {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-info-side h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .contact-info-side p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .whatsapp-card {
+            background: #dcf8c6;
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            border: 2px solid #c8f0a8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-card::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            background: rgba(37, 211, 102, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .whatsapp-card .wa-icon-large {
+            width: 50px;
+            height: 50px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .whatsapp-card .wa-icon-large svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        .whatsapp-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--green-darker);
+            letter-spacing: -0.3px;
+        }
+        .whatsapp-card p {
+            font-size: 0.9rem;
+            color: #3a5a40;
+            line-height: 1.5;
+        }
+
+        .whatsapp-card .btn-whatsapp {
+            align-self: flex-start;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .contact-detail-item:last-child {
+            border-bottom: none;
+        }
+        .contact-detail-item .icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--text-primary);
+            color: #ccc;
+            padding: 36px 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            letter-spacing: -0.1px;
+        }
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        .footer a:hover {
+            color: #fff;
+        }
+        .footer .footer-brand {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* ==================== FLOATING WHATSAPP BUTTON ==================== */
+        .floating-wa {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            width: 58px;
+            height: 58px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            animation: float-pulse 2.5s infinite;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
+            animation: none;
+        }
+        .floating-wa svg {
+            width: 30px;
+            height: 30px;
+            fill: #fff;
+        }
+
+        @keyframes float-pulse {
+            0%,
+            100% {
+                box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+            }
+            50% {
+                box-shadow: 0 6px 36px rgba(37, 211, 102, 0.7), 0 0 0 16px rgba(37, 211, 102, 0);
+            }
+        }
+
+        .floating-wa-tooltip {
+            position: absolute;
+            right: 68px;
+            background: #fff;
+            color: var(--text-primary);
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: var(--shadow);
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all var(--transition);
+        }
+        .floating-wa:hover .floating-wa-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ==================== SCROLL ANIMATIONS ==================== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delay for product cards */
+        .product-card.animate-on-scroll:nth-child(1) {
+            transition-delay: 0s;
+        }
+        .product-card.animate-on-scroll:nth-child(2) {
+            transition-delay: 0.06s;
+        }
+        .product-card.animate-on-scroll:nth-child(3) {
+            transition-delay: 0.12s;
+        }
+        .product-card.animate-on-scroll:nth-child(4) {
+            transition-delay: 0.04s;
+        }
+        .product-card.animate-on-scroll:nth-child(5) {
+            transition-delay: 0.10s;
+        }
+        .product-card.animate-on-scroll:nth-child(6) {
+            transition-delay: 0.16s;
+        }
+        .product-card.animate-on-scroll:nth-child(7) {
+            transition-delay: 0.08s;
+        }
+        .product-card.animate-on-scroll:nth-child(8) {
+            transition-delay: 0.14s;
+        }
+        .product-card.animate-on-scroll:nth-child(9) {
+            transition-delay: 0.20s;
+        }
+        .product-card.animate-on-scroll:nth-child(10) {
+            transition-delay: 0.12s;
+        }
+        .product-card.animate-on-scroll:nth-child(11) {
+            transition-delay: 0.18s;
+        }
+        .product-card.animate-on-scroll:nth-child(12) {
+            transition-delay: 0.24s;
+        }
+
+        /* ==================== RESPONSIVE STYLES ==================== */
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .hero-inner {
+                gap: 36px;
+            }
+            .about-grid {
+                gap: 36px;
+            }
+            .contact-grid {
+                gap: 36px;
+            }
+            .hero-card-stack {
+                max-width: 340px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                height: 60px;
+            }
+            :root {
+                --header-height: 60px;
+            }
+
+            /* Mobile nav */
+            .menu-toggle {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: #fff;
+                flex-direction: column;
+                padding: 90px 28px 40px;
+                gap: 4px;
+                box-shadow: var(--shadow-lg);
+                transition: right var(--transition-slow);
+                z-index: 1000;
+                align-items: stretch;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                display: block;
+                padding: 12px 16px;
+                border-radius: var(--radius);
+                font-size: 1rem;
+                text-align: left;
+            }
+            .nav-cta {
+                text-align: center !important;
+                margin-top: 12px;
+            }
+
+            /* Mobile overlay */
+            .nav-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.4);
+                z-index: 999;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity var(--transition-slow);
+            }
+            .nav-overlay.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .hero {
+                padding: calc(var(--header-height) + 36px) 20px 50px;
+            }
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .hero-description {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .hero-badge {
+                margin: 0 auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-card-stack {
+                max-width: 260px;
+                margin: 0 auto;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+            .product-card-body {
+                padding: 12px 14px 16px;
+            }
+            .product-card-body h3 {
+                font-size: 0.95rem;
+            }
+            .product-desc {
+                font-size: 0.8rem;
+            }
+            .product-meta span {
+                font-size: 0.7rem;
+                padding: 3px 8px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .about-visual {
+                order: -1;
+            }
+            .about-image-placeholder {
+                max-width: 100%;
+                aspect-ratio: 16/9;
+            }
+            .stats-row {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            .stat-item {
+                padding: 14px 8px;
+            }
+            .stat-number {
+                font-size: 1.4rem;
+            }
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .contact-form-wrapper {
+                padding: 24px 18px;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+            .section-header {
+                margin-bottom: 30px;
+            }
+            .filter-tabs {
+                gap: 6px;
+                margin-bottom: 28px;
+            }
+            .filter-tab {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+
+            .floating-wa {
+                bottom: 18px;
+                right: 18px;
+                width: 50px;
+                height: 50px;
+            }
+            .floating-wa svg {
+                width: 26px;
+                height: 26px;
+            }
+            .floating-wa-tooltip {
+                display: none;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .product-card-body {
+                padding: 10px 10px 14px;
+                gap: 4px;
+            }
+            .product-card-body h3 {
+                font-size: 0.85rem;
+            }
+            .product-desc {
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+            .product-meta span {
+                font-size: 0.68rem;
+                padding: 2px 7px;
+            }
+            .product-moq {
+                font-size: 0.75rem;
+            }
+            .product-inquire-btn {
+                font-size: 0.78rem;
+                padding: 8px;
+            }
+            .product-tag {
+                font-size: 0.68rem;
+                padding: 4px 8px;
+                top: 8px;
+                left: 8px;
+            }
+            .product-stock-badge {
+                font-size: 0.65rem;
+                padding: 4px 8px;
+                bottom: 8px;
+                right: 8px;
+            }
+            .filter-tab {
+                padding: 7px 12px;
+                font-size: 0.75rem;
+            }
+            .stats-row {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            .stat-item {
+                padding: 10px 6px;
+            }
+            .stat-number {
+                font-size: 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+                letter-spacing: -0.8px;
+            }
+            .hero-description {
+                font-size: 0.9rem;
+            }
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo" aria-label="Clothing Wholesale Home">
+                <div class="logo-icon">CW</div>
+                <span class="logo-text">Clothing Wholesale</span>
+            </a>
+            <nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="nav-overlay" id="navOverlay"></div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#products" data-nav-link>Products</a></li>
+                    <li><a href="#about" data-nav-link>About Us</a></li>
+                    <li><a href="#contact" data-nav-link>Contact</a></li>
+                    <li><a href="https://wa.me/8614718129437?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20wholesale%20pricing%20and%20your%20product%20catalog." class="nav-cta" target="_blank" rel="noopener noreferrer">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                            WhatsApp
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="home">
+        <div class="hero-inner">
+            <div class="hero-content animate-on-scroll">
+                <div class="hero-badge">
+                    <span class="dot"></span> Global Apparel Stock Supplier
+                </div>
+                <h1>
+                    Quality <span class="highlight">Garment Inventory</span> for Wholesale Buyers
+                </h1>
+                <p class="hero-description">
+                    Long-term exporter of all-category apparel stock. Mixed container loads, flexible MOQ, and competitive pricing — trusted by buyers worldwide.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">View Products</a>
+                    <a href="https://wa.me/8614718129437?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20wholesale%20pricing%20and%20your%20product%20catalog." class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual animate-on-scroll">
+                <div class="hero-card-stack">
+                    <div class="hero-card">
+                        <img src="img/儿童公主裙1.jpg" alt="Girls' Princess Dress" class="card-img-placeholder" loading="eager">
+                    </div>
+                    <div class="hero-card">
+                        <img src="img/成人连衣裙1.jpg" alt="Women's Fashion Dress" class="card-img-placeholder" loading="eager">
+                    </div>
+                    <div class="hero-card">
+                        <img src="img/男童套装1.jpg" alt="Boys' Casual Set" class="card-img-placeholder" loading="eager">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRODUCTS SECTION ==================== -->
+    <section class="section products-section" id="products">
+        <div class="section-inner">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Our Inventory</span>
+                <h2 class="section-title">Available Stock Products</h2>
+                <p class="section-subtitle">Browse our current inventory. All products are available for immediate export. Click any product to inquire.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+                <div class="filter-tabs animate-on-scroll" id="filterTabs">
+                    <button class="filter-tab active" data-filter="all">All Products</button>
+                    <button class="filter-tab" data-filter="kids-shoes">Sturdy Kids’ Shoes</button>
+                    <button class="filter-tab" data-filter="baby-rompers">Baby Romper & Bodysuit Sets</button>
+                    <button class="filter-tab" data-filter="girls-princess">Adorable Girls’ Princess Dresses</button>
+                    <button class="filter-tab" data-filter="girls-printed">Pretty Floral Print Dresses</button>
+                    <button class="filter-tab" data-filter="boys-sets">Smart Boys’ 2-Piece Sets</button>
+                    <button class="filter-tab" data-filter="womens-dresses">Elegant Women’s Dresses</button>
+                    <button class="filter-tab" data-filter="boys-formal">Boys’ Formal Suits</button>
+                    <button class="filter-tab" data-filter="school-bags">Classic School Bags</button>
+                    <button class="filter-tab" data-filter="stylish-backpacks">Stylish Everyday Backpacks</button>
+                    <button class="filter-tab" data-filter="branded-bags">Branded Fashion Bags</button>
+                    <button class="filter-tab" data-filter="handbag-sets">Cute Girls’ Handbag Sets</button>
+                    <button class="filter-tab" data-filter="kids-slippers">Comfy Kids’ Slippers</button>
+                    <button class="filter-tab" data-filter="cotton-fabric">Quality Cotton Fabric</button>
+                </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="section about-section" id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-text animate-on-scroll">
+                    <span class="section-label">About EverStock</span>
+                    <h2>Your Trusted Garment Inventory Partner</h2>
+                    <p>
+                        We are a long-term exporter of <strong>all-category apparel inventory</strong>, serving wholesale buyers across the globe. From t-shirts and dresses to jackets and activewear, we maintain a diverse stock ready for immediate shipment.
+                    </p>
+                    <p>
+                        Our specialty lies in <strong>mixed container loads</strong> — we help you fill containers with a variety of styles to maximize your retail potential. Whether you need a single style in bulk or a curated mix, we've got you covered.
+                    </p>
+                    <p>
+                        <strong>Flexible MOQ • Competitive Pricing • Reliable Export</strong>
+                    </p>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years Exporting</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Countries Served</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Styles Available</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual animate-on-scroll">
+                    <div class="about-image-placeholder">
+                        <span class="inner-icon">📦</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="section contact-section" id="contact">
+        <div class="section-inner">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Get In Touch</span>
+                <h2 class="section-title">Contact Us for Pricing</h2>
+                <p class="section-subtitle">Fill out the form or reach us directly via WhatsApp. We respond within hours.</p>
+            </div>
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper animate-on-scroll" id="contactFormWrapper">
+                    <h3>Send an Inquiry</h3>
+                    <p class="form-subtitle">We'll get back to you within 24 hours.</p>
+                    <form id="inquiryForm" action="https://formsubmit.co/luoziting857@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Inquiry from Website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactInfo">Email or WhatsApp Number *</label>
+                            <input type="text" id="contactInfo" name="contact" placeholder="e.g., email@domain.com or +1 234 567 890" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productInterest">Product(s) of Interest</label>
+                            <input type="text" id="productInterest" name="product_interest" placeholder="e.g., Men's Cotton T-Shirt, Denim Jacket">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your requirements — quantities, preferred styles, target market, etc." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" id="submitBtn">Send Inquiry</button>
+                    </form>
+                    <div class="form-success-msg" id="formSuccessMsg">
+                        ✅ <strong>Thank you!</strong> Your inquiry has been sent. We'll get back to you shortly.
+                    </div>
+                </div>
+
+                <!-- Contact Info Side -->
+                <div class="contact-info-side animate-on-scroll">
+                    <h3>Prefer to chat directly?</h3>
+                    <p>Reach us on WhatsApp for the fastest response. Our team is available during business hours (GMT+8).</p>
+
+                    <!-- WhatsApp Card -->
+                    <div class="whatsapp-card">
+                        <div class="wa-icon-large">
+                            <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+                        </div>
+                        <h4>Chat on WhatsApp</h4>
+                        <p>Click below to open a chat directly. A pre-filled message will help us understand your needs faster.</p>
+                        <!--
+                        ============================================================
+                        IMPORTANT: Replace the phone number below with the actual WhatsApp number.
+                        Format: Country code + number (no spaces, no plus sign in the URL)
+                        Example: https://wa.me/8614718129437?text=...
+                        Current placeholder: 8614718129437
+                        ============================================================
+                        -->
+                        <a href="https://wa.me/8614718129437?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20wholesale%20pricing%20and%20your%20product%20catalog." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                            Start WhatsApp Chat
+                        </a>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="contact-detail-item">
+                        <div class="icon-circle">📧</div>
+                        <span>luoziting857@gmail.com</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <div class="icon-circle">📞</div>
+                        <span>+86 147 1812 9437</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <div class="icon-circle">📍</div>
+                        <span>Guangzhou, China — Export Worldwide</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">EverStock Garments</span>
+            <span>© 2026 EverStock Garments. All rights reserved.</span>
+            <span><a href="#home">Back to Top ↑</a></span>
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+    <!--
+    ============================================================
+    IMPORTANT: Replace the phone number in the href below with the actual WhatsApp number.
+    ============================================================
+    -->
+    <a href="https://wa.me/8614718129437?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20wholesale%20pricing%20and%20your%20product%20catalog." class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <span class="floating-wa-tooltip">Chat with us!</span>
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+    </a>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="products.js"></script>
+    <script>
+        (function() {
+            // ============================================================
+            // CONFIGURATION - CHANGE YOUR WHATSAPP NUMBER HERE
+            // ============================================================
+            var WHATSAPP_NUMBER = '8614718129437';
+
+            // ============================================================
+            // DOM ELEMENTS
+            // ============================================================
+            var header = document.getElementById('header');
+            var menuToggle = document.getElementById('menuToggle');
+            var navLinks = document.getElementById('navLinks');
+            var navOverlay = document.getElementById('navOverlay');
+            var filterTabs = document.getElementById('filterTabs');
+            var productGrid = document.getElementById('productGrid');
+            var inquiryForm = document.getElementById('inquiryForm');
+            var formSuccessMsg = document.getElementById('formSuccessMsg');
+            var floatingWA = document.querySelector('.floating-wa');
+            var allNavLinks = document.querySelectorAll('[data-nav-link]');
+
+            // ============================================================
+            // MOBILE MENU
+            // ============================================================
+            function openMenu() {
+                navLinks.classList.add('active');
+                navOverlay.classList.add('active');
+                menuToggle.classList.add('active');
+                menuToggle.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeMenu() {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+            menuToggle.addEventListener('click', function() {
+                if (navLinks.classList.contains('active')) closeMenu();
+                else openMenu();
+            });
+            navOverlay.addEventListener('click', closeMenu);
+            allNavLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (navLinks.classList.contains('active')) closeMenu();
+                });
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) closeMenu();
+            });
+
+            // ============================================================
+            // HEADER SCROLL SHADOW
+            // ============================================================
+            function updateHeaderShadow() {
+                if (window.scrollY > 10) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+            }
+            window.addEventListener('scroll', updateHeaderShadow, { passive: true });
+            updateHeaderShadow();
+
+            // ============================================================
+            // RENDER PRODUCTS (data from products.js)
+            // ============================================================
+            function renderAllProducts() {
+                productGrid.innerHTML = '';
+                PRODUCTS.forEach(function(p) {
+                    var card = document.createElement('div');
+                    card.className = 'product-card animate-on-scroll';
+                    card.setAttribute('data-category', p.category || '');
+                    card.innerHTML =
+                        '<div class="product-card-image">' +
+                            '<span class="product-tag">' + esc(p.tag) + '</span>' +
+                            '<span class="product-stock-badge">' + esc(p.stockBadge) + '</span>' +
+                            '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy">' +
+                        '</div>' +
+                        '<div class="product-card-body">' +
+                            '<h3>' + esc(p.name) + '</h3>' +
+                            '<div class="product-meta">' +
+                                '<span>' + esc(p.sizes) + '</span>' +
+                                '<span>' + esc(p.colors) + '</span>' +
+                                '<span>' + esc(p.season) + '</span>' +
+                            '</div>' +
+                            '<p class="product-desc">' + esc(p.desc) + '</p>' +
+                            '<p class="product-moq">📦 MOQ: ' + esc(p.moq) + '</p>' +
+                            '<a href="#contact" class="product-inquire-btn">Inquire via WhatsApp →</a>' +
+                        '</div>';
+                    productGrid.appendChild(card);
+                });
+                setupScrollObserver();
+            }
+
+            function esc(str) {
+                if (!str) return '';
+                return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+            }
+
+            // ============================================================
+            // SCROLL OBSERVER
+            // ============================================================
+            var scrollObserver = null;
+            function setupScrollObserver() {
+                if (scrollObserver) scrollObserver.disconnect();
+                scrollObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            scrollObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { root: null, rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+                document.querySelectorAll('.animate-on-scroll').forEach(function(el) { scrollObserver.observe(el); });
+            }
+
+            // ============================================================
+            // PRODUCT FILTERING
+            // ============================================================
+            filterTabs.addEventListener('click', function(e) {
+                var tab = e.target.closest('.filter-tab');
+                if (!tab) return;
+                filterTabs.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+                tab.classList.add('active');
+                var filterValue = tab.getAttribute('data-filter');
+                productGrid.querySelectorAll('.product-card').forEach(function(card) {
+                    var cat = card.getAttribute('data-category');
+                    if (filterValue === 'all' || cat.indexOf(filterValue) !== -1) {
+                        card.style.display = '';
+                        card.classList.remove('visible');
+                        requestAnimationFrame(function() { card.classList.add('visible'); });
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('visible');
+                    }
+                });
+            });
+
+            // ============================================================
+            // WHATSAPP CLICK
+            // ============================================================
+            productGrid.addEventListener('click', function(e) {
+                var btn = e.target.closest('.product-inquire-btn');
+                if (!btn) return;
+                e.preventDefault();
+                var card = btn.closest('.product-card');
+                var name = card ? card.querySelector('h3').textContent.trim() : 'your products';
+                var msg = encodeURIComponent("Hi, I'm interested in " + name + ". Could you please send me pricing and more details?");
+                window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg, '_blank', 'noopener,noreferrer');
+            });
+
+            // ============================================================
+            // FORM SUBMISSION — AJAX via FormSubmit.co
+            // ============================================================
+            var submitBtn = document.getElementById('submitBtn');
+            inquiryForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = document.getElementById('name').value.trim();
+                var contactInfo = document.getElementById('contactInfo').value.trim();
+                var message = document.getElementById('message').value.trim();
+                if (!name || !contactInfo || !message) return;
+
+                // Disable button while sending
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                fetch(inquiryForm.action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        name: name,
+                        contact: contactInfo,
+                        product_interest: document.getElementById('productInterest').value.trim(),
+                        message: message
+                    })
+                })
+                .then(function(res) { return res.json(); })
+                .then(function() {
+                    inquiryForm.style.display = 'none';
+                    formSuccessMsg.classList.add('show');
+                    setTimeout(function() {
+                        inquiryForm.style.display = '';
+                        formSuccessMsg.classList.remove('show');
+                        inquiryForm.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Inquiry';
+                    }, 5000);
+                })
+                .catch(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Inquiry';
+                    alert('Submission failed. Please try WhatsApp instead.');
+                });
+            });
+
+            // ============================================================
+            // FLOATING WA BUTTON VISIBILITY
+            // ============================================================
+            function updateFloatingWAVisibility() {
+                var cs = document.getElementById('contact');
+                if (!cs || !floatingWA) return;
+                var r = cs.getBoundingClientRect();
+                if (r.top < window.innerHeight * 0.5 && r.bottom > 0) {
+                    floatingWA.style.opacity = '0';
+                    floatingWA.style.pointerEvents = 'none';
+                } else {
+                    floatingWA.style.opacity = '1';
+                    floatingWA.style.pointerEvents = 'auto';
+                }
+            }
+            window.addEventListener('scroll', updateFloatingWAVisibility, { passive: true });
+            updateFloatingWAVisibility();
+
+            // ============================================================
+            // KEYBOARD ACCESSIBILITY
+            // ============================================================
+            filterTabs.addEventListener('keydown', function(e) {
+                var tab = e.target.closest('.filter-tab');
+                if (!tab) return;
+                var tabs = Array.from(filterTabs.querySelectorAll('.filter-tab'));
+                var idx = tabs.indexOf(tab);
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    var dir = e.key === 'ArrowRight' ? 1 : -1;
+                    tabs[(idx + dir + tabs.length) % tabs.length].focus();
+                }
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    tab.click();
+                }
+            });
+
+            // ============================================================
+            // INIT
+            // ============================================================
+            renderAllProducts();
+            console.log('EverStock Garments - Website ready.');
+            console.log('Edit products.csv with WPS/Excel, then run 更新预览.bat.');
+            console.log('WhatsApp: ' + WHATSAPP_NUMBER);
+        })();
+    </script>
+</body>
+</html>
